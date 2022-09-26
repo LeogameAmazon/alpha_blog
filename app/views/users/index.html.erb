@@ -18,8 +18,15 @@
                                     </h5>
                                     <p class="card-text"><%= pluralize(user.articles.count,"article") %></p>
                                         <td><%= link_to "View profile", user, class: "btn btn-outline-success", form: {style: 'display:inline-block;'} %></td>
-                                        <% if logged_in and user == current_user %>
-                                            <td><%= link_to "Edit profile", edit_user_path(user), class: "btn btn-outline-info", form: {style: 'display:inline-block;'} %></td>
+                                        <% if logged_in %> 
+                                            <% if user == current_user %>
+                                                <td><%= link_to "Edit profile", edit_user_path(user), class: "btn btn-outline-info", form: {style: 'display:inline-block;'} %></td>
+                                            <% end %>
+                                            <% if current_user.admin? %>
+                                            <%= button_to "Delete user", user_path(user), class: "btn btn-outline-danger" ,
+                                            method: :delete,form: {style: 'display:inline-block;', 
+                                            data: { turbo_confirm: 'Are you Sure to Delete user account and all associated articles?' }}%>
+                                            <% end %>
                                         <% end %>
                                 </div>
                                 <div class="card-footer text-muted">
