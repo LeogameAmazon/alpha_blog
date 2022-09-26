@@ -1,0 +1,14 @@
+ 
+
+    <div class="container" id = 'home-container'>
+        <div class="carusel p-5 mb-4 text-white bg-dark rounded-3 text-center" >
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold ">Alpha blog.</h1>
+                <p> Este es mi primer desarrollo web.</p>
+                <%= link_to "Sign up!", signup_path,class:"btn btn-dark" %>
+            </div>
+        </div>
+    </div>
+    <%= button_to  'Articles listing', articles_path, method: :get %> |
+    <td><%= button_to  'About page', about_path, method: :get %>|</td>
+
